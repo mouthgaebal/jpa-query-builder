@@ -1,5 +1,6 @@
 package jdbc;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -41,6 +42,11 @@ class ResultSetMapperTest extends DataBaseTestSupport {
         } catch (Exception e) {
             throw new IllegalStateException(e);
         }
+    }
+
+    @AfterEach
+    void tearDown() {
+        truncateTable("users");
     }
 
     @Test

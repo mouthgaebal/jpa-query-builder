@@ -46,4 +46,14 @@ public class DataBaseTestSupport {
         }
     }
 
+    protected void truncateTable(String tableName) {
+        final String sql = "TRUNCATE TABLE " + tableName;
+        try (final Connection connection = getConnection();
+             final var statement = connection.createStatement()) {
+            statement.execute(sql);
+        } catch (SQLException e) {
+            throw new IllegalStateException(e);
+        }
+    }
+
 }
